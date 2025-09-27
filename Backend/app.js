@@ -1,12 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const route = require("./Routes/UserRoutes")
 
 const app = express();
 
-app.use("/",(req, res, next) => {
-    res.send("Hello from Backend");
-})
+//middleware 
+app.use("/users",route);
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log("connected to MongoDB"))
