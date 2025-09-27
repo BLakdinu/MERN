@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -7,7 +8,7 @@ app.use("/",(req, res, next) => {
     res.send("Hello from Backend");
 })
 
-mongoose.connect("mongodb+srv://MrB:hallo123@cluster-a.kcqfzcn.mongodb.net/MrB-Test")
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log("connected to MongoDB"))
 .then(() => {
     app.listen(5000);
